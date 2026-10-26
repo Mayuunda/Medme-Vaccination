@@ -13,6 +13,14 @@ export type Dose = {
   signedBy?: string
 }
 
+export type Exemption = {
+  type: "medical" | "nonmedical"
+  /** vaccines the exemption covers; empty means all required vaccines */
+  vaccines: VaccineId[]
+  /** date the exemption document was received (YYYY-MM-DD) */
+  documentDate: string
+}
+
 export type Student = {
   id: string
   name: string
@@ -23,6 +31,9 @@ export type Student = {
   doses: Dose[]
   /** false when no record could be found at all (distinct from a record with zero doses) */
   hasRecord?: boolean
+  exemption?: Exemption
+  /** true when the family's certificate has no parent signature (a record error schools call insufficient) */
+  unsigned?: boolean
   /** DEMO-FAKE: a booked visit date for students who already scheduled */
   visitDate?: string
 }
@@ -58,6 +69,21 @@ export type VaccineResult = {
   sourceUrl: string
   verification: VerificationStatus | "SAMPLE"
 }
+
+/**
+ * The categories schools sort students into (Oregon's list), plus two of ours:
+ * "in-process" (only doses not yet due remain, counts as good standing) and
+ * "no-rules" (no rules on file for the state, never counted as incomplete).
+ */
+export type SchoolCategory =
+  | "complete"
+  | "in-process"
+  | "incomplete"
+  | "insufficient"
+  | "nonmedical-exemption"
+  | "medical-exemption"
+  | "no-record"
+  | "no-rules"
 
 export type ChildStatus = "up-to-date" | "missing" | "unknown"
 

@@ -1,9 +1,11 @@
 import { getChildStatus, getMissingShots } from "./missingShots"
-import type { ChildStatus, Interval, Requirement, Student, VaccineResult } from "./types"
+import { categoryOrder, getSchoolCategory } from "./categories"
+import type { ChildStatus, Interval, Requirement, SchoolCategory, Student, VaccineResult } from "./types"
 
 export type StudentSummary = {
   student: Student
   status: ChildStatus
+  category: SchoolCategory
   results: VaccineResult[]
   /** vaccine ids that are missing doses */
   missing: string[]
@@ -20,6 +22,7 @@ export function summarize(
     return {
       student,
       status: getChildStatus(results),
+      category: getSchoolCategory(student, results),
       results,
       missing: results.filter((r) => r.status === "missing").map((r) => r.vaccineId),
     }
@@ -34,6 +37,13 @@ export function cohortCounts(summaries: StudentSummary[]) {
     missing: count("missing"),
     unknown: count("unknown"),
   }
+}
+
+/** Students per school category, in report order. Always sums to the number of students. */
+export function categoryCounts(summaries: StudentSummary[]): Record<SchoolCategory, number> {
+  const out = Object.fromEntries(categoryOrder.map((c) => [c, 0])) as Record<SchoolCategory, number>
+  for (const s of summaries) out[s.category] += 1
+  return out
 }
 
 /** Coverage per vaccine for a group: students with that vaccine complete, of those with a requirement for it. */

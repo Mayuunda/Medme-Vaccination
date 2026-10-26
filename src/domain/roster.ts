@@ -31,7 +31,7 @@ function dosesFor(vaccineId: string, offsets: number[], count: number, birthDate
 
 /**
  * Deterministic fake roster. Mix: about 45% up to date, 40% missing at least one dose,
- * 15% no record. Most students are in Oregon, some in North Carolina, a few in Texas
+ * 15% no record, plus a few exemptions and unsigned records. Most students are in Oregon, some in North Carolina, a few in Texas
  * (which has no rules on file, so those students come out as unknown).
  */
 export function generateRoster(seed: number, size: number, today: string): Student[] {
@@ -85,6 +85,17 @@ export function generateRoster(seed: number, size: number, today: string): Stude
       hasRecord,
       visitDate,
     })
+  }
+  // Overlay on a second generator so the base roster (and every count built on it) stays the same.
+  // Some students with a gap carry an exemption; a few records are unsigned.
+  const rand2 = mulberry32(seed + 7919)
+  for (const st of out) {
+    const a = rand2()
+    const b = rand2()
+    const hasGap = st.hasRecord !== false && st.doses.length < 9
+    if (hasGap && a < 0.08) st.exemption = { type: "nonmedical", vaccines: [], documentDate: addDays(today, -(10 + Math.floor(b * 60))) }
+    else if (hasGap && a < 0.1) st.exemption = { type: "medical", vaccines: [], documentDate: addDays(today, -(10 + Math.floor(b * 60))) }
+    else if (st.hasRecord !== false && b < 0.02) st.unsigned = true
   }
   return out
 }

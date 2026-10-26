@@ -1,3 +1,5 @@
+import { categoryLabels, categoryOrder } from "../../domain/categories"
+import type { SchoolCategory } from "../../domain/types"
 import { useMemo, useState } from "react"
 import { Badge, Button, Card, Field, Heading, Icon, Select, StatusBadge } from "../../components/ui"
 import { complianceReportPdf, studentRecordPdf, studentsCsv } from "../../demo/adminDocs"
@@ -10,8 +12,8 @@ import { stateName } from "../../data/states"
 import { dateLabel } from "../../demo/journey"
 import { useDemo } from "../../state"
 
-export type StudentFilter = { q: string; school: string; grade: string; status: string; missing: string; queue: string }
-export const emptyFilter: StudentFilter = { q: "", school: "", grade: "", status: "", missing: "", queue: "" }
+export type StudentFilter = { q: string; school: string; grade: string; status: string; category: string; missing: string; queue: string }
+export const emptyFilter: StudentFilter = { q: "", school: "", grade: "", status: "", category: "", missing: "", queue: "" }
 const views = [
   { id: "", label: "All students" },
   { id: "needs-visit", label: "Missing doses, no visit" },
@@ -56,6 +58,7 @@ export function StudentDirectory({
         (!filter.school || s.student.school === filter.school) &&
         (!filter.grade || s.student.grade === filter.grade) &&
         (!filter.status || s.status === filter.status) &&
+        (!filter.category || s.category === filter.category) &&
         (!filter.missing || s.missing.includes(filter.missing)),
     )
     const order = (a: StudentSummary, b: StudentSummary) =>
@@ -106,6 +109,10 @@ export function StudentDirectory({
             <option value="up-to-date">Up to date</option>
             <option value="missing">Missing doses</option>
             <option value="unknown">Unknown</option>
+          </Select>
+          <Select label="School category" value={filter.category} onChange={(e) => set({ category: e.target.value })}>
+            <option value="">Any category</option>
+            {categoryOrder.map((c) => <option key={c} value={c}>{categoryLabels[c]}</option>)}
           </Select>
           <Select label="Missing vaccine" value={filter.missing} onChange={(e) => set({ missing: e.target.value })}>
             <option value="">Any</option>
@@ -179,7 +186,7 @@ export function StudentDirectory({
 }
 
 function scopeText(f: StudentFilter) {
-  const parts = [f.queue && views.find((v) => v.id === f.queue)?.label, f.school, f.grade && `Grade ${f.grade}`, f.status, f.q && `search "${f.q}"`].filter(Boolean)
+  const parts = [f.queue && views.find((v) => v.id === f.queue)?.label, f.school, f.grade && `Grade ${f.grade}`, f.status, f.category && categoryLabels[f.category as SchoolCategory], f.q && `search "${f.q}"`].filter(Boolean)
   return parts.length ? parts.join(", ") : "All students"
 }
 
@@ -205,6 +212,7 @@ export function StudentProfile({ summary, onBack }: { summary?: StudentSummary; 
           <p>{s.school} · Grade {s.grade} · {stateName(s.state)} · Born {dateLabel(s.birthDate)} · ID {s.id}</p>
         </div>
         <StatusBadge status={summary.status} />
+        <Badge>{categoryLabels[summary.category]}</Badge>
         <Button variant="secondary" onClick={() => downloadBlob(studentRecordPdf(summary), `${s.id}-immunization-record-demo.pdf`)}><Icon name="document" size={17} /> Download record (PDF)</Button>
       </div>
       <div className="profile-grid">

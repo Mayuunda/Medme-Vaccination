@@ -31,6 +31,8 @@ test("administrator finds a student, contacts families and downloads documents",
 
   // reports downloads
   await page.getByRole("tab", { name: "Reports" }).click()
+  await expect(page.getByRole("heading", { name: "Students by category" })).toBeVisible()
+  await expect(page.getByRole("cell", { name: "Nonmedical exemption" })).toBeVisible()
   const [report] = await Promise.all([
     page.waitForEvent("download"),
     page.getByRole("button", { name: /Compliance report, all students/ }).click(),

@@ -4,6 +4,7 @@ import { downloadBlob } from "../../demo/documents"
 import type { StudentSummary } from "../../domain/cohorts"
 import { useDemo } from "../../state"
 import Appointments from "./Appointments"
+import Categories from "./Categories"
 import Tracker from "./Tracker"
 
 export default function Reports({ campaign, summaries }: { campaign: string; summaries: StudentSummary[] }) {
@@ -32,6 +33,7 @@ export default function Reports({ campaign, summaries }: { campaign: string; sum
         </div>
         <p className="inline-note">Student records are downloaded from each student's profile.</p>
       </Card>
+      <div style={{ marginTop: "var(--space-5)" }}><Categories summaries={summaries} /></div>
       <div style={{ marginTop: "var(--space-5)" }}><Tracker summaries={summaries} /></div>
       <Card style={{ marginTop: "var(--space-5)" }}>
         <details>
