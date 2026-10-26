@@ -79,4 +79,8 @@ export type StateRule = {
   /** Written parental consent needed below this age (null = not stated). */
   writtenConsentUnderAge: number | null
   notes: string
+  /** Who the state allows to sign the school immunization certificate (empty when not read). */
+  whoMaySign?: string[]
+  /** Whether a pharmacy-signed record is accepted as the school record in this state. */
+  acceptsPharmacyRecord?: "yes" | "no" | "unknown"
 }

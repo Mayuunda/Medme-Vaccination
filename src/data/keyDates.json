@@ -1,0 +1,79 @@
+[
+  {
+    "id": "or-report-ab",
+    "state": "OR",
+    "label": "School report sections A and B to D due to the local health department",
+    "kind": "fixed-date",
+    "date": "2027-01-13",
+    "sourceUrl": "https://www.oregon.gov/oha/ph/preventionwellness/vaccinesimmunization/school/pages/reportingrequirements.aspx",
+    "status": "unverified",
+    "lastReviewed": "2026-10-26",
+    "note": "Two Oregon pages disagree on which sections are due on which date. Confirm before relying on this."
+  },
+  {
+    "id": "or-report-dh",
+    "state": "OR",
+    "label": "Later report sections due to the local health department",
+    "kind": "fixed-date",
+    "date": "2027-03-08",
+    "sourceUrl": "https://www.oregon.gov/oha/PH/PREVENTIONWELLNESS/VACCINESIMMUNIZATION/GETTINGIMMUNIZED/Documents/SchReportDates.pdf",
+    "status": "unverified",
+    "lastReviewed": "2026-10-26",
+    "note": "Same caveat as the January date."
+  },
+  {
+    "id": "or-orders",
+    "state": "OR",
+    "label": "Exclusion orders mailed to families",
+    "kind": "fixed-date",
+    "date": "2027-02-03",
+    "sourceUrl": "https://www.oregon.gov/oha/PH/PREVENTIONWELLNESS/VACCINESIMMUNIZATION/GETTINGIMMUNIZED/Documents/SchReportDates.pdf",
+    "status": "unverified",
+    "lastReviewed": "2026-10-26",
+    "note": ""
+  },
+  {
+    "id": "or-exclusion-day",
+    "state": "OR",
+    "label": "Exclusion Day",
+    "kind": "fixed-date",
+    "date": "2027-02-24",
+    "sourceUrl": "https://www.oregon.gov/oha/PH/PREVENTIONWELLNESS/VACCINESIMMUNIZATION/GETTINGIMMUNIZED/Documents/SchReportDates.pdf",
+    "status": "unverified",
+    "lastReviewed": "2026-10-26",
+    "note": ""
+  },
+  {
+    "id": "nc-30-day",
+    "state": "NC",
+    "label": "Family has 30 calendar days from the first day of school to provide a record",
+    "kind": "rolling",
+    "rule": "30 calendar days after the first day of attendance",
+    "sourceUrl": "https://www.dph.ncdhhs.gov/programs/epidemiology/immunization/schools/rules-and-laws",
+    "status": "unverified",
+    "lastReviewed": "2026-10-26",
+    "note": ""
+  },
+  {
+    "id": "nc-report",
+    "state": "NC",
+    "label": "Annual immunization status report for kindergarten, 7th and 12th grade",
+    "kind": "fixed-date",
+    "date": "2026-11-01",
+    "sourceUrl": "https://www.dph.ncdhhs.gov/annual-health-assessment-and-imm-compliance-reporting-public-schools-2025/open",
+    "status": "unverified",
+    "lastReviewed": "2026-10-26",
+    "note": "Date taken from the 2025 memo (November 1). Confirm the 2026 memo."
+  },
+  {
+    "id": "ca-assessment",
+    "state": "CA",
+    "label": "Annual immunization assessment (child care, TK and kindergarten, 7th grade)",
+    "kind": "fixed-date",
+    "date": "2026-12-05",
+    "sourceUrl": "https://www.cdph.ca.gov/Programs/CID/DCDC/CDPH%20Document%20Library/Immunization/Annual_Immunization_Assessment_Reporting_2025-26.pdf",
+    "status": "unverified",
+    "lastReviewed": "2026-10-26",
+    "note": "Date is from the 2025-26 cycle (2025-12-05) moved to this year as a placeholder. Confirm the current memo."
+  }
+]

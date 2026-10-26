@@ -9,7 +9,11 @@
     "vaccinesNoRx": "all-acip",
     "requiresAgreement": false,
     "writtenConsentUnderAge": null,
-    "notes": "Read on an official state page by the team: pharmacists may give ACIP vaccines from age 7, any age with a prescription. TODO: add the source URL and reviewer date, then set status to read-on-official-page."
+    "notes": "Read on an official state page by the team: pharmacists may give ACIP vaccines from age 7, any age with a prescription. TODO: add the source URL and reviewer date, then set status to read-on-official-page. School record: the parent signs the Certificate of Immunization Status and verified records are attached.",
+    "whoMaySign": [
+      "Parent (student at 15 or older); verified records are copied on or attached"
+    ],
+    "acceptsPharmacyRecord": "yes"
   },
   {
     "state": "NC",
@@ -19,10 +23,18 @@
     "minAgeNoRx": 18,
     "minAgeWithRx": 6,
     "vaccinesNoRx": "all-acip",
-    "exceptionsNoRx": { "vaccines": ["flu", "covid"], "minAge": 7 },
+    "exceptionsNoRx": {
+      "vaccines": [
+        "flu",
+        "covid"
+      ],
+      "minAge": 7
+    },
     "requiresAgreement": false,
     "writtenConsentUnderAge": 18,
-    "notes": "Read on the Board of Pharmacy FAQ: with a prescription from a prescriber who examined the child, ages 6 and up. Without one, only flu and COVID from age 7; other vaccines 18 and up. Written parental consent under 18. A federal PREP declaration is said to cover routine childhood vaccines ages 3 to 18 through 2029; the end date is not confirmed, so it is not used. TODO: source URL and reviewer date."
+    "notes": "Read on the Board of Pharmacy FAQ: with a prescription from a prescriber who examined the child, ages 6 and up. Without one, only flu and COVID from age 7; other vaccines 18 and up. Written parental consent under 18. A federal PREP declaration is said to cover routine childhood vaccines ages 3 to 18 through 2029; the end date is not confirmed, so it is not used. TODO: source URL and reviewer date.",
+    "whoMaySign": [],
+    "acceptsPharmacyRecord": "unknown"
   },
   {
     "state": "GA",
@@ -34,7 +46,11 @@
     "vaccinesNoRx": "unknown",
     "requiresAgreement": true,
     "writtenConsentUnderAge": null,
-    "notes": "Read on an official page: needs a physician agreement, Form 3231 signed by a physician, NP, PA or health department. Age limits not read yet. TODO: source URL, ages."
+    "notes": "Pharmacists need a physician agreement (source not read yet). Separate from that, Form 3231 is the school immunization certificate: only a Georgia physician, APRN, PA, or a Board of Health or State Immunization Office employee may sign it, so a pharmacy record cannot replace it. TODO: source URL for the pharmacist rule, ages.",
+    "whoMaySign": [
+      "Georgia physician, APRN or PA; Board of Health or State Immunization Office employee"
+    ],
+    "acceptsPharmacyRecord": "no"
   },
   {
     "state": "CA",
@@ -46,6 +62,10 @@
     "vaccinesNoRx": "all-acip",
     "requiresAgreement": false,
     "writtenConsentUnderAge": null,
-    "notes": "From a secondary report only: independent administration from age 3. Not read on an official page."
+    "notes": "From a secondary report only: independent administration from age 3. Not read on an official page. School record: schools accept a record showing name, birth date, dose dates, vaccine and who gave it.",
+    "whoMaySign": [
+      "Any record that shows name, birth date, each dose date, vaccine and who gave it"
+    ],
+    "acceptsPharmacyRecord": "yes"
   }
 ]

@@ -21,7 +21,7 @@ Three demo roles share one app: parent, pharmacist, administrator (school and ca
 - Browser tests: `pnpm exec playwright test` (needs a running server, defaults to `http://localhost:3000`; set `DEMO_BASE_URL` and `CHROMIUM_PATH` if different; tests never start a server)
 - Format: `pnpm format`
 
-Before every push run type check, unit tests, build and the browser tests. All must pass. CI runs the same checks. At the time of writing `tsc` reports 2 errors in `src/screens/Admin.tsx`; fixing them is work item W-60.
+Before every push run type check, unit tests, build and the browser tests. All must pass. CI runs the same checks.
 
 ## Branches and safety
 

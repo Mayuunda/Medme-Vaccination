@@ -75,7 +75,7 @@ State rules known so far (copy into `stateRules.json`; all other states start `n
 | --- | --- | --- |
 | Oregon | Pharmacists may give all ACIP vaccines from age 7. Any age with a prescription. No separate ages 3 to 6 provision. | Read on official state page |
 | North Carolina | With a prescription, ages 6 and up (prescriber must have examined the child). Without one, only flu and COVID from age 7. Other vaccines without a prescription are 18 and up. Written parental consent under 18. The Board FAQ says the federal PREP declaration covers routine childhood vaccines for ages 3 to 18 through 2029; the end date for that category is not confirmed, so no date logic. | Read on Board FAQ |
-| Georgia | Needs a physician agreement. Form 3231 signed by a physician, NP, PA or health department. | Read on official page |
+| Georgia | Pharmacists need a physician agreement (source not read yet). Separate: Form 3231 is the school immunization certificate, signed only by a Georgia physician, APRN, PA, or a Board of Health or State Immunization Office employee. A pharmacy record cannot replace it. | Unverified |
 | California | Independent administration from age 3. | From a secondary report, unverified |
 
 "Works for every state" means the data model and screens handle every state from day one and honestly show how much is researched. Researching all 50 is a separate, ongoing task (W-80), not something to invent in code.
@@ -407,7 +407,13 @@ Dropped as unnecessary: the "Notes" paragraph about recommendations (a school fo
 
 Oregon (as read in the handbook): schools submit an annual immunization report to the local health department in sections. Sections A and B are due mid-January; the later sections (D to H) are due late February or early March and no later than 12 days after Exclusion Day, which is the fourth Wednesday in February. The health department issues exclusion orders to families for students who are incomplete, insufficient or have no record; the school cancels an order when valid dates, an exemption or immunity documentation arrive, and records the date received. Schools with 10 or more students must post their immunization numbers within 30 days of the start of school and again within 30 days after Exclusion Day (website, main office, and to parents). Reports and exclusion orders are kept one year.
 
-North Carolina (as read on the state page): there is no annual K-12 report described on that page (an annual report applies to child care). Instead, parents must be told on day one that they have 30 calendar days to present a record or show the child has begun the series. A child incomplete only because of minimum intervals between doses is "in process" and may attend. After 30 days a child without a qualifying record is excluded. Schools keep a separate list of exempt students because they may need to be excluded in an outbreak.
+North Carolina (as read on the state pages, 2026-10-26): public schools report the immunization status of every kindergarten, 7th grade and 12th grade student through an online portal, due November 1 (the 2025 memo; private schools get a separate memo). Parents must also be told on day one that they have 30 calendar days to present a record or show the child has begun the series. A child incomplete only because of minimum intervals between doses is "in process" and may attend. After 30 days a child without a qualifying record is excluded. Schools keep a separate list of exempt students because they may need to be excluded in an outbreak.
+
+California (as read on the CDPH reporting memo, 2026-10-26): child care and schools report each child's status in the annual immunization assessment for child care, transitional kindergarten and kindergarten, and 7th grade, through the Immunization Reporting application in the CAIR Hub (login needed). Schools with no students in those grades must still report. The 2025-26 cycle was due 2025-12-05. Schools with more than 10 percent conditional or overdue students can be audited.
+
+Georgia: no state report was found on the pages read. Schools keep Form 3231 and exemption affidavits (DPH Form 2208) on file for inspection by health officials.
+
+Oregon dates: the page of report forms and the page of report dates disagree on which sections are due on 2027-01-13 and which on 2027-03-08. Confirm with the state before relying on either.
 
 Design consequences for the compliance report PDF and Reports tab (W-94):
 - Title block with school, school year, as-of date, prepared by, and the state the rules are from.
